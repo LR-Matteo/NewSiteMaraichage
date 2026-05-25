@@ -1,301 +1,41 @@
 {
   "admin_password": "oregale2025",
   "products": [
-    {
-      "id": 1,
-      "name": "Tomates (différentes variétés)",
-      "price": 3.50,
-      "unit": "kg",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/tomates.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Courgettes",
-      "price": 1.00,
-      "unit": "kg",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/courgettes.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Aubergines",
-      "price": 2.50,
-      "unit": "kg",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/aubergines.jpg"
-    },
-    {
-      "id": 4,
-      "name": "Poivrons rouge et jaunes",
-      "price": 3.00,
-      "unit": "kg",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/poivrons.jpg"
-    },
-    {
-      "id": 5,
-      "name": "Concombres",
-      "price": 1.00,
-      "unit": "unité",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/concombres.jpg"
-    },
-    {
-      "id": 6,
-      "name": "Haricots verts",
-      "price": 4.00,
-      "unit": "kg",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/haricots_verts.jpg"
-    },
-    {
-      "id": 7,
-      "name": "Fraises pleine terre",
-      "price": 6.90,
-      "unit": "kg",
-      "season": "été",
-      "category": "fruits",
-      "image": "img/fraises.jpg"
-    },
-    {
-      "id": 8,
-      "name": "Melon Charentais",
-      "price": 2.80,
-      "unit": "unité",
-      "season": "été",
-      "category": "fruits",
-      "image": "img/melon_charentais.jpg"
-    },
-    {
-      "id": 9,
-      "name": "Pastèque",
-      "price": 0.90,
-      "unit": "kg",
-      "season": "été",
-      "category": "fruits",
-      "image": "img/pasteque.jpg"
-    },
-    {
-      "id": 10,
-      "name": "Fraises Mara des bois pleine terre",
-      "price": 10.00,
-      "unit": "kg",
-      "season": "été",
-      "category": "fruits",
-      "image": "img/fraises_mara_des_bois.jpg"
-    },
-    {
-      "id": 11,
-      "name": "Tomates cerise",
-      "price": 5.00,
-      "unit": "kg",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/tomates_cerises.jpg"
-    },
-    {
-      "id": 12,
-      "name": "Oignons jaune/rouge",
-      "price": 1.50,
-      "unit": "2 kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/oignons.jpg"
-    },
-    {
-      "id": 13,
-      "name": "Echalottes",
-      "price": 3.00,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/echalotes.jpg"
-    },
-    {
-      "id": 14,
-      "name": "Carottes",
-      "price": 1.50,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/carottes.jpg"
-    },
-    {
-      "id": 15,
-      "name": "Choux-fleurs",
-      "price": 1.50,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/choux_fleur.jpg"
-    },
-    {
-      "id": 16,
-      "name": "Pommes de terre (différentes variétés)",
-      "price": 1.40,
-      "unit": "10 kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/pomme_de_terre.jpg"
-    },
-    {
-      "id": 17,
-      "name": "Navets (rose/jaune)",
-      "price": 2.80,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/navets.jpg"
-    },
-    {
-      "id": 18,
-      "name": "Butternut",
-      "price": 1.80,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/butternuts.jpg"
-    },
-    {
-      "id": 19,
-      "name": "Salade verte (différentes variétés)",
-      "price": 1.20,
-      "unit": "unité",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/salade_verte.jpg"
-    },
-    {
-      "id": 20,
-      "name": "Blettes / Carde / Côtes de bète",
-      "price": 1.50,
-      "unit": "kg",
-      "season": "été",
-      "category": "légumes",
-      "image": "img/blettes.jpg"
-    },
-    {
-      "id": 21,
-      "name": "Choux cabus (Quintal d'Alsace)",
-      "price": 1.50,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/choux_cabus.jpg"
-    },
-    {
-      "id": 22,
-      "name": "Choux rouge",
-      "price": 1.50,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/choux_rouge.jpg"
-    },
-    {
-      "id": 23,
-      "name": "Choux de Bruxelles",
-      "price": 3.00,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/choux_de_bruxelle.jpg"
-    },
-    {
-      "id": 24,
-      "name": "Betterave cru (rouge/jaune orangé)",
-      "price": 1.90,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/betterave.jpg"
-    },
-    {
-      "id": 25,
-      "name": "Potimarron",
-      "price": 1.20,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/potimarrons.jpg"
-    },
-    {
-      "id": 26,
-      "name": "Potiron (citrouille)",
-      "price": 0.90,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/potiron.jpg"
-    },
-    {
-      "id": 27,
-      "name": "Poireaux",
-      "price": 1.50,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/poireaux.jpg"
-    },
-    {
-      "id": 28,
-      "name": "Patates douces",
-      "price": 1.60,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/patates_douces.jpg"
-    },
-    {
-      "id": 29,
-      "name": "Topinambourg",
-      "price": 2.80,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/topinambour.jpg"
-    },
-    {
-      "id": 30,
-      "name": "Céleri rave",
-      "price": 1.80,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/celeri_rave.jpg"
-    },
-    {
-      "id": 31,
-      "name": "Choux Milan",
-      "price": 1.50,
-      "unit": "kg",
-      "season": "hiver",
-      "category": "légumes",
-      "image": "img/choux_milan.jpg"
-    }
+    { "id": 1,  "name": "Tomates (différentes variétés)",        "price": 3.50,  "unit": "kg",     "season": "été",   "category": "légumes", "image": "/img/tomates.jpg" },
+    { "id": 2,  "name": "Courgettes",                            "price": 1.00,  "unit": "kg",     "season": "été",   "category": "légumes", "image": "/img/courgettes.jpg" },
+    { "id": 3,  "name": "Aubergines",                            "price": 2.50,  "unit": "kg",     "season": "été",   "category": "légumes", "image": "/img/aubergines.jpg" },
+    { "id": 4,  "name": "Poivrons rouge et jaunes",              "price": 3.00,  "unit": "kg",     "season": "été",   "category": "légumes", "image": "/img/poivrons.jpg" },
+    { "id": 5,  "name": "Concombres",                            "price": 1.00,  "unit": "unité",  "season": "été",   "category": "légumes", "image": "/img/concombres.jpg" },
+    { "id": 6,  "name": "Haricots verts",                        "price": 4.00,  "unit": "kg",     "season": "été",   "category": "légumes", "image": "/img/haricots_verts.jpg" },
+    { "id": 7,  "name": "Fraises pleine terre",                  "price": 6.90,  "unit": "kg",     "season": "été",   "category": "fruits",  "image": "/img/fraises.jpg" },
+    { "id": 8,  "name": "Melon Charentais",                      "price": 2.80,  "unit": "unité",  "season": "été",   "category": "fruits",  "image": "/img/melon_charentais.jpg" },
+    { "id": 9,  "name": "Pastèque",                              "price": 0.90,  "unit": "kg",     "season": "été",   "category": "fruits",  "image": "/img/pasteque.jpg" },
+    { "id": 10, "name": "Fraises Mara des bois pleine terre",    "price": 10.00, "unit": "kg",     "season": "été",   "category": "fruits",  "image": "/img/fraises_mara_des_bois.jpg" },
+    { "id": 11, "name": "Tomates cerise",                        "price": 5.00,  "unit": "kg",     "season": "été",   "category": "légumes", "image": "/img/tomates_cerises.jpg" },
+    { "id": 12, "name": "Oignons jaune/rouge",                   "price": 1.50,  "unit": "2 kg",   "season": "hiver", "category": "légumes", "image": "/img/oignons.jpg" },
+    { "id": 13, "name": "Echalottes",                            "price": 3.00,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/echalotes.jpg" },
+    { "id": 14, "name": "Carottes",                              "price": 1.50,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/carottes.jpg" },
+    { "id": 15, "name": "Choux-fleurs",                          "price": 1.50,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/choux_fleur.jpg" },
+    { "id": 16, "name": "Pommes de terre (différentes variétés)","price": 1.40,  "unit": "10 kg",  "season": "hiver", "category": "légumes", "image": "/img/pomme_de_terre.jpg" },
+    { "id": 17, "name": "Navets (rose/jaune)",                   "price": 2.80,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/navets.jpg" },
+    { "id": 18, "name": "Butternut",                             "price": 1.80,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/butternuts.jpg" },
+    { "id": 19, "name": "Salade verte (différentes variétés)",   "price": 1.20,  "unit": "unité",  "season": "été",   "category": "légumes", "image": "/img/salade_verte.jpg" },
+    { "id": 20, "name": "Blettes / Carde / Côtes de bète",       "price": 1.50,  "unit": "kg",     "season": "été",   "category": "légumes", "image": "/img/blettes.jpg" },
+    { "id": 21, "name": "Choux cabus (Quintal d'Alsace)",        "price": 1.50,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/choux_cabus.jpg" },
+    { "id": 22, "name": "Choux rouge",                           "price": 1.50,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/choux_rouge.jpg" },
+    { "id": 23, "name": "Choux de Bruxelles",                    "price": 3.00,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/choux_de_bruxelle.jpg" },
+    { "id": 24, "name": "Betterave cru (rouge/jaune orangé)",    "price": 1.90,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/betterave.jpg" },
+    { "id": 25, "name": "Potimarron",                            "price": 1.20,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/potimarrons.jpg" },
+    { "id": 26, "name": "Potiron (citrouille)",                  "price": 0.90,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/potiron.jpg" },
+    { "id": 27, "name": "Poireaux",                              "price": 1.50,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/poireaux.jpg" },
+    { "id": 28, "name": "Patates douces",                        "price": 1.60,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/patates_douces.jpg" },
+    { "id": 29, "name": "Topinambourg",                          "price": 2.80,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/topinambour.jpg" },
+    { "id": 30, "name": "Céleri rave",                           "price": 1.80,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/celeri_rave.jpg" },
+    { "id": 31, "name": "Choux Milan",                           "price": 1.50,  "unit": "kg",     "season": "hiver", "category": "légumes", "image": "/img/choux_milan.jpg" }
   ],
   "promotions": [
-    {
-      "id": 1,
-      "product_id": 16,
-      "promo_price": 0.95,
-      "description": "Par 10 kg",
-      "active": true
-    },
-    {
-      "id": 2,
-      "product_id": 12,
-      "promo_price": 1.25,
-      "description": "Par 2 kg",
-      "active": true
-    }
+    { "id": 1, "product_id": 16, "promo_price": 0.95, "description": "Par 10 kg", "active": true },
+    { "id": 2, "product_id": 12, "promo_price": 1.25, "description": "Par 2 kg",  "active": true }
   ],
   "home_content": {
     "hero_url": "",
