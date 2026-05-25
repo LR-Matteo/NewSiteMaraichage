@@ -1,0 +1,79 @@
+{
+  "admin_password": "oregale2025",
+  "products": [
+    {
+      "id": 1,
+      "name": "Tomate cœur de bœuf",
+      "price": 4.50,
+      "unit": "kg",
+      "season": "été",
+      "category": "légumes",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Courgette ronde",
+      "price": 3.20,
+      "unit": "kg",
+      "season": "été",
+      "category": "légumes",
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Fraise Mara des bois",
+      "price": 6.90,
+      "unit": "barquette",
+      "season": "été",
+      "category": "fruits",
+      "image": ""
+    },
+    {
+      "id": 4,
+      "name": "Courge butternut",
+      "price": 2.80,
+      "unit": "kg",
+      "season": "hiver",
+      "category": "légumes",
+      "image": ""
+    },
+    {
+      "id": 5,
+      "name": "Mâche verte",
+      "price": 4.00,
+      "unit": "botte",
+      "season": "hiver",
+      "category": "légumes",
+      "image": ""
+    }
+  ],
+  "promotions": [
+    {
+      "id": 1,
+      "product_id": 1,
+      "promo_price": 3.50,
+      "description": "Spécial fin de saison",
+      "active": true
+    },
+    {
+      "id": 2,
+      "product_id": 3,
+      "promo_price": 5.50,
+      "description": "Stock limité",
+      "active": true
+    }
+  ],
+  "home_content": {
+    "hero_url": "",
+    "portrait_url": "",
+    "gallery_1": "",
+    "gallery_2": "",
+    "gallery_3": "",
+    "gallery_4": "",
+    "gallery_5": "",
+    "gallery_6": "",
+    "about_text": "Installés en Haute-Vienne depuis 2015, nous cultivons plus de quarante variétés de légumes et fruits de saison sur 3 hectares de terres argilo-calcaires. Chaque plant est semé, soigné et récolté à la main, dans le respect des cycles naturels.",
+    "about_text_2": "Ici, pas d'intrants chimiques, pas de raccourcis. Nous travaillons avec la nature, pas contre elle. Nos légumes poussent lentement, développent leurs arômes, et arrivent dans vos assiettes comme ils le méritent : entiers, vrais, vivants.",
+    "video_url": ""
+  }
+}

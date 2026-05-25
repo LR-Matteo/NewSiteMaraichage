@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Move-Item \"c:\\\\Users\\\\matte\\\\Desktop\\\\maj_site\\\\supabase-data.jsx\" \"c:\\\\Users\\\\matte\\\\Desktop\\\\maj_site\\\\data-layer.jsx\")"
+    ]
+  }
+}
