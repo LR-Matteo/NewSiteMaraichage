@@ -12,27 +12,29 @@ const RETRAITS = [
   { id: 'sam-ferme',   label: 'À la ferme — Samedi',    detail: 'Samedi · 9h–11h · 1 Les Soulzors, Verneuil-Moustiers' },
 ];
 
-function formatOrder(items, retraitId, note) {
+function formatOrder(items, retraitId, phone, email, note) {
   const retrait = RETRAITS.find(r => r.id === retraitId);
   const lines = items.map(i => `- ${i.nom} × ${i.qty} ${i.unit.replace('€/', '')}`).join('\n');
-  return `DEMANDE DE RÉSERVATION\n\nProduits :\n${lines}\n\nPoint de retrait : ${retrait ? retrait.detail : retraitId}${note ? `\n\nMessage : ${note}` : ''}`;
+  const contact = [phone && `Téléphone : ${phone}`, email && `Email : ${email}`].filter(Boolean).join('\n');
+  return `DEMANDE DE RÉSERVATION\n\nContact :\n${contact}\n\nProduits :\n${lines}\n\nPoint de retrait : ${retrait ? retrait.detail : retraitId}${note ? `\n\nMessage : ${note}` : ''}`;
 }
 
 function CartDrawer({ items, onClose, onUpdateQty, onRemove, onClear }) {
   const t = ORSTokens;
-  const [form, setForm] = React.useState({ name: '', phone: '', retrait: '', note: '' });
+  const [form, setForm] = React.useState({ name: '', phone: '', email: '', retrait: '', note: '' });
+  const [contactError, setContactError] = React.useState(false);
   const [status, setStatus] = React.useState('idle');
-  const F = (k, v) => setForm(f => ({ ...f, [k]: v }));
+  const F = (k, v) => { setForm(f => ({ ...f, [k]: v })); setContactError(false); };
 
   async function submit(e) {
     e.preventDefault();
-    if (!form.name.trim() || !form.phone.trim() || !form.retrait) return;
+    if (!form.phone.trim() && !form.email.trim()) { setContactError(true); return; }
     setStatus('sending');
     try {
       await emailjs.send('service_lfgrmkv', 'template_1er3wnb', {
         name: form.name.trim(),
-        email: form.phone.trim(),
-        message: formatOrder(items, form.retrait, form.note),
+        email: form.email.trim() || form.phone.trim(),
+        message: formatOrder(items, form.retrait, form.phone.trim(), form.email.trim(), form.note),
       });
       setStatus('success');
     } catch (err) {
@@ -138,7 +140,7 @@ function CartDrawer({ items, onClose, onUpdateQty, onRemove, onClear }) {
                 padding: '14px 16px', borderLeft: `3px solid ${t.orange}`,
                 background: t.cremeDark, fontSize: 13, color: t.charbonSoft, lineHeight: 1.65,
               }}>
-                Votre demande sera traitée dans les meilleurs délais. Nous vous contacterons par téléphone pour confirmer la disponibilité et valider la réservation.{' '}
+                Votre demande sera traitée dans les meilleurs délais. Nous vous contacterons par téléphone ou par email pour confirmer la disponibilité et valider la réservation.{' '}
                 <strong>Aucune réservation n'est garantie avant cette confirmation.</strong>
               </div>
 
@@ -149,9 +151,19 @@ function CartDrawer({ items, onClose, onUpdateQty, onRemove, onClear }) {
                   <input style={inputStyle} value={form.name} onChange={e => F('name', e.target.value)} placeholder="Votre nom" required />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: t.charbonMute, marginBottom: 8 }}>Téléphone *</label>
-                  <input style={inputStyle} type="tel" value={form.phone} onChange={e => F('phone', e.target.value)} placeholder="06 XX XX XX XX" required />
+                  <label style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: t.charbonMute, marginBottom: 4 }}>Téléphone</label>
+                  <div style={{ fontSize: 11, color: t.charbonMute, marginBottom: 8 }}>Au moins l'un des deux est requis</div>
+                  <input style={{ ...inputStyle, borderColor: contactError ? '#dc2626' : t.bord }} type="tel" value={form.phone} onChange={e => F('phone', e.target.value)} placeholder="06 XX XX XX XX" />
                 </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: t.charbonMute, marginBottom: 8 }}>Email</label>
+                  <input style={{ ...inputStyle, borderColor: contactError ? '#dc2626' : t.bord }} type="email" value={form.email} onChange={e => F('email', e.target.value)} placeholder="votre@email.fr" />
+                </div>
+                {contactError && (
+                  <p style={{ fontSize: 12, color: '#dc2626', margin: '-8px 0 0', fontStyle: 'italic' }}>
+                    Veuillez renseigner un téléphone ou une adresse email.
+                  </p>
+                )}
                 <div>
                   <label style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: t.charbonMute, marginBottom: 10 }}>Point de retrait *</label>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
