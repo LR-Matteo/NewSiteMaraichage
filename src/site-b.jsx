@@ -389,7 +389,7 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
 
       {/* APERÇU PROMOTIONS */}
       <FadeIn>
-        <ApercuProduitsB t={t} promos={allPromos} onVoirPlus={() => setSection('promotions')} />
+        <ApercuProduitsB t={t} promos={allPromos} onVoirPlus={() => setSection('promotions')} onAddToCart={addToCart} />
       </FadeIn>
 
       </>}
@@ -456,10 +456,10 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
                 background: t.creme, border: `2px solid ${t.orange}`, overflow: 'hidden',
                 display: 'flex', flexDirection: 'column',
               }}>
-                <div style={{ position: 'relative' }}>
+                <div style={{ position: 'relative', aspectRatio: '4/3' }}>
                   {promo.image
-                    ? <Image src={promo.image} alt={promo.titre} width={400} height={300} sizes="(max-width: 768px) 100vw, 25vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
-                    : <Placeholder label={promo.titre} ratio="4/3" tone="sable" />
+                    ? <Image src={promo.image} alt={promo.titre} fill sizes="(max-width: 768px) 100vw, 25vw" style={{ objectFit: 'cover' }} />
+                    : <Placeholder label={promo.titre} ratio="auto" tone="sable" style={{ position: 'absolute', inset: 0, height: '100%' }} />
                   }
                   <div style={{
                     position: 'absolute', top: 10, left: 10,
@@ -478,6 +478,14 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
                       fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase', fontWeight: 700,
                     }}>{promo.remise}</div>
                   )}
+                  <button onClick={() => addToCart({ nom: promo.titre, prix: promo.prix, unit: promo.unit })} title="Ajouter à ma demande" style={{
+                    position: 'absolute', bottom: 10, right: 10,
+                    background: t.charbon, color: t.creme, border: 'none', cursor: 'pointer',
+                    width: 34, height: 34, borderRadius: '50%',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <Picto name="basket" size={14} stroke={1.8} color={t.creme} />
+                  </button>
                 </div>
                 <div style={{ padding: 16, flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <h3 style={{ fontFamily: t.serif, fontSize: 20, fontWeight: 500, margin: '0 0 6px', letterSpacing: -0.3, lineHeight: 1.05 }}>
@@ -675,7 +683,7 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
   );
 }
 
-function ApercuProduitsB({ t, promos, onVoirPlus }) {
+function ApercuProduitsB({ t, promos, onVoirPlus, onAddToCart }) {
   const echantillon = promos.slice(0, 4);
   return (
     <section style={{ padding: '120px 56px', background: t.cremeDark }}>
@@ -715,10 +723,10 @@ function ApercuProduitsB({ t, promos, onVoirPlus }) {
             <article key={i} onClick={onVoirPlus} style={{
               background: t.creme, border: `2px solid ${t.orange}`, overflow: 'hidden', cursor: 'pointer',
             }}>
-              <div style={{ position: 'relative' }}>
+              <div style={{ position: 'relative', aspectRatio: '1/1' }}>
                 {promo.image
-                  ? <Image src={promo.image} alt={promo.titre} width={400} height={400} sizes="(max-width: 768px) 50vw, 25vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
-                  : <Placeholder label={promo.titre} ratio="1/1" tone="sable" />
+                  ? <Image src={promo.image} alt={promo.titre} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: 'cover' }} />
+                  : <Placeholder label={promo.titre} ratio="auto" tone="sable" style={{ position: 'absolute', inset: 0, height: '100%' }} />
                 }
                 <div style={{
                   position: 'absolute', top: 12, left: 12,
@@ -736,6 +744,16 @@ function ApercuProduitsB({ t, promos, onVoirPlus }) {
                     padding: '5px 10px', borderRadius: 999,
                     fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase', fontWeight: 700,
                   }}>{promo.remise}</div>
+                )}
+                {onAddToCart && (
+                  <button onClick={e => { e.stopPropagation(); onAddToCart({ nom: promo.titre, prix: promo.prix, unit: promo.unit }); }} title="Ajouter à ma demande" style={{
+                    position: 'absolute', bottom: 10, right: 10,
+                    background: t.charbon, color: t.creme, border: 'none', cursor: 'pointer',
+                    width: 34, height: 34, borderRadius: '50%',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <Picto name="basket" size={14} stroke={1.8} color={t.creme} />
+                  </button>
                 )}
               </div>
               <div style={{ padding: 20 }}>

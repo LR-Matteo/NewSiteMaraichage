@@ -366,10 +366,10 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
                 <article key={i} onClick={() => setSection('promotions')} style={{
                   background: t.creme, border: `2px solid ${t.orange}`, overflow: 'hidden', cursor: 'pointer',
                 }}>
-                  <div style={{ position: 'relative' }}>
+                  <div style={{ position: 'relative', aspectRatio: '1/1' }}>
                     {promo.image
-                      ? <Image src={promo.image} alt={promo.titre} width={300} height={300} sizes="50vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
-                      : <Placeholder label={promo.titre} ratio="1/1" tone="sable" />
+                      ? <Image src={promo.image} alt={promo.titre} fill sizes="50vw" style={{ objectFit: 'cover' }} />
+                      : <Placeholder label={promo.titre} ratio="auto" tone="sable" style={{ position: 'absolute', inset: 0, height: '100%' }} />
                     }
                     {promo.remise && (
                       <div style={{
@@ -379,6 +379,14 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
                         padding: '3px 7px', borderRadius: 999,
                       }}>{promo.remise}</div>
                     )}
+                    <button onClick={e => { e.stopPropagation(); addToCart({ nom: promo.titre, prix: promo.prix, unit: promo.unit }); }} title="Ajouter à ma demande" style={{
+                      position: 'absolute', bottom: 8, left: 8,
+                      background: t.charbon, color: t.creme, border: 'none', cursor: 'pointer',
+                      width: 30, height: 30, borderRadius: '50%',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <Picto name="basket" size={12} stroke={1.8} color={t.creme} />
+                    </button>
                   </div>
                   <div style={{ padding: 12 }}>
                     <h3 style={{ fontFamily: t.serif, fontSize: 15, fontWeight: 500, margin: '0 0 6px', letterSpacing: -0.2, lineHeight: 1.1 }}>{promo.titre}</h3>
@@ -514,10 +522,10 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
           </div>
         ) : allPromos.map((promo, i) => (
           <div key={i} style={{ background: t.creme, border: `2px solid ${t.orange}`, marginBottom: 16, overflow: 'hidden' }}>
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: 'relative', aspectRatio: '16/9' }}>
               {promo.image
-                ? <Image src={promo.image} alt={promo.titre} width={400} height={225} sizes="100vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
-                : <Placeholder label={promo.titre} ratio="16/9" tone="sable" />
+                ? <Image src={promo.image} alt={promo.titre} fill sizes="100vw" style={{ objectFit: 'cover' }} />
+                : <Placeholder label={promo.titre} ratio="auto" tone="sable" style={{ position: 'absolute', inset: 0, height: '100%' }} />
               }
               <div style={{
                 position: 'absolute', top: 10, left: 10,
@@ -531,6 +539,14 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
               {promo.remise && (
                 <div style={{ position: 'absolute', top: 10, right: 10, background: t.orange, color: t.creme, padding: '4px 8px', borderRadius: 999, fontSize: 9, letterSpacing: 1, textTransform: 'uppercase', fontWeight: 700 }}>{promo.remise}</div>
               )}
+              <button onClick={() => addToCart({ nom: promo.titre, prix: promo.prix, unit: promo.unit })} title="Ajouter à ma demande" style={{
+                position: 'absolute', bottom: 10, right: 10,
+                background: t.charbon, color: t.creme, border: 'none', cursor: 'pointer',
+                width: 34, height: 34, borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Picto name="basket" size={14} stroke={1.8} color={t.creme} />
+              </button>
             </div>
             <div style={{ padding: 18 }}>
               <h3 style={{ fontFamily: t.serif, fontSize: 22, fontWeight: 500, margin: '0 0 6px', letterSpacing: -0.3 }}>{promo.titre}</h3>
