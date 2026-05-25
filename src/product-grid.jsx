@@ -146,6 +146,16 @@ function ProductGridCards({ produits, t, promos, onVoirPromo, onAddToCart }) {
                   fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase', fontWeight: 700,
                 }}>PROMO</div>
               )}
+              {onAddToCart && (
+                <button onClick={() => onAddToCart(p)} title="Ajouter à ma demande" style={{
+                  position: 'absolute', bottom: 10, right: 10,
+                  background: t.charbon, color: t.creme, border: 'none', cursor: 'pointer',
+                  width: 34, height: 34, borderRadius: '50%',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <Picto name="basket" size={14} stroke={1.8} color={t.creme} />
+                </button>
+              )}
             </div>
             <div style={{ padding: 16, flex: 1, display: 'flex', flexDirection: 'column' }}>
               <h3 style={{ fontFamily: t.serif, fontSize: 20, fontWeight: 500, margin: '0 0 6px', letterSpacing: -0.3, lineHeight: 1.05, flex: 1 }}>
@@ -154,43 +164,35 @@ function ProductGridCards({ produits, t, promos, onVoirPromo, onAddToCart }) {
               {promo && promo.desc && (
                 <p style={{ fontSize: 12, color: t.orange, margin: '0 0 10px', fontStyle: 'italic', lineHeight: 1.4 }}>{promo.desc}</p>
               )}
-              <div style={{ borderTop: `1px solid ${t.bord}`, paddingTop: 12 }}>
-                <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 10 }}>
-                  <div>
-                    {promo ? (
-                      <>
-                        <div style={{ fontFamily: t.serif, fontSize: 26, fontWeight: 500, color: t.orange, lineHeight: 1, letterSpacing: -0.5 }}>
-                          {promo.prix}
-                          <span style={{ fontSize: 12, color: t.charbonMute, fontStyle: 'italic', marginLeft: 3 }}>{p.unit}</span>
-                        </div>
-                        <div style={{ fontSize: 11, color: t.charbonMute, textDecoration: 'line-through', marginTop: 2 }}>
-                          {p.prix} {p.unit}
-                        </div>
-                      </>
-                    ) : (
-                      <div style={{ fontFamily: t.serif, fontSize: 26, fontWeight: 500, color: t.vert, lineHeight: 1, letterSpacing: -0.5 }}>
-                        {p.prix}
+              <div style={{
+                display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+                borderTop: `1px solid ${t.bord}`, paddingTop: 12,
+              }}>
+                <div>
+                  {promo ? (
+                    <>
+                      <div style={{ fontFamily: t.serif, fontSize: 26, fontWeight: 500, color: t.orange, lineHeight: 1, letterSpacing: -0.5 }}>
+                        {promo.prix}
                         <span style={{ fontSize: 12, color: t.charbonMute, fontStyle: 'italic', marginLeft: 3 }}>{p.unit}</span>
                       </div>
-                    )}
-                  </div>
-                  {promo && (
-                    <button onClick={onVoirPromo} style={{
-                      background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
-                      width: 34, height: 34, borderRadius: '50%',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
-                      <Picto name="arrowRight" size={13} stroke={2} />
-                    </button>
+                      <div style={{ fontSize: 11, color: t.charbonMute, textDecoration: 'line-through', marginTop: 2 }}>
+                        {p.prix} {p.unit}
+                      </div>
+                    </>
+                  ) : (
+                    <div style={{ fontFamily: t.serif, fontSize: 26, fontWeight: 500, color: t.vert, lineHeight: 1, letterSpacing: -0.5 }}>
+                      {p.prix}
+                      <span style={{ fontSize: 12, color: t.charbonMute, fontStyle: 'italic', marginLeft: 3 }}>{p.unit}</span>
+                    </div>
                   )}
                 </div>
-                {onAddToCart && (
-                  <button onClick={() => onAddToCart(p)} style={{
-                    width: '100%', background: t.charbon, color: t.creme, border: 'none', cursor: 'pointer',
-                    padding: '9px 12px', fontSize: 11, letterSpacing: 1, textTransform: 'uppercase',
-                    fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                {promo && (
+                  <button onClick={onVoirPromo} style={{
+                    background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
+                    width: 34, height: 34, borderRadius: '50%',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
-                    <Picto name="basket" size={12} stroke={1.8} color={t.creme} /> Ajouter à ma demande
+                    <Picto name="arrowRight" size={13} stroke={2} />
                   </button>
                 )}
               </div>

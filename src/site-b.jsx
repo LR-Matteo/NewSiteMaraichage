@@ -115,7 +115,6 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
       if (exists) return prev.map(i => i.nom === p.nom ? { ...i, qty: i.qty + 1 } : i);
       return [...prev, { nom: p.nom, prix: p.prix, unit: p.unit, qty: 1 }];
     });
-    setCartOpen(true);
   }
   function updateQty(nom, qty) {
     if (qty <= 0) setCartItems(prev => prev.filter(i => i.nom !== nom));
