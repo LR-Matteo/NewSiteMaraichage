@@ -1,18 +1,32 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import { Picto, Placeholder } from './shared';
 
+const RATIO_DIMS = { '1/1': [400, 400], '4/3': [400, 300], '3/4': [300, 400], '16/9': [400, 225] };
+
 const ProduitImage = ({ p, ratio, tone, style }) => {
-  if (p.image) {
+  if (!p.image) {
+    return <Placeholder label={p.nom} ratio={ratio} tone={tone} style={style} />;
+  }
+  if (ratio === 'auto') {
     return (
-      <img src={p.image} alt={p.nom} style={{
-        display: 'block', width: '100%',
-        aspectRatio: ratio !== 'auto' ? ratio : undefined,
-        objectFit: 'cover', ...style,
-      }} />
+      <div style={{ position: 'relative', width: '100%', height: '100%', ...style }}>
+        <Image src={p.image} alt={p.nom} fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+      </div>
     );
   }
-  return <Placeholder label={p.nom} ratio={ratio} tone={tone} style={style} />;
+  const [w, h] = RATIO_DIMS[ratio] || [400, 400];
+  return (
+    <Image
+      src={p.image}
+      alt={p.nom}
+      width={w}
+      height={h}
+      sizes="(max-width: 768px) 100vw, 33vw"
+      style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }}
+    />
+  );
 };
 
 function ProductGrid({ produits, t, variant, promos = [], onVoirPromo }) {

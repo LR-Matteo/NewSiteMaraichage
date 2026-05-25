@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import { Picto, Placeholder, FadeIn, MapContact, ORSTokens } from './shared';
 import { ProductGrid } from './product-grid';
@@ -162,7 +163,7 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
       {/* HERO */}
       <section style={{ position: 'relative', margin: '24px 32px 0', height: 720, overflow: 'hidden', background: t.charbon }}>
         {homeContent.hero_url
-          ? <img src={homeContent.hero_url} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.35 }} />
+          ? <Image src={homeContent.hero_url} alt="" fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.35 }} />
           : <Placeholder label="Photo maraîcher heure dorée · paysage rural Haute-Vienne" ratio="auto" tone="dark" style={{ position: 'absolute', inset: 0, height: '100%' }} />
         }
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(31,29,24,0.1) 0%, rgba(31,29,24,0.5) 100%)' }}/>
@@ -247,7 +248,7 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
             <div style={{ position: 'relative' }}>
               <div style={{ border: `2px solid ${t.orange}`, overflow: 'hidden' }}>
                 {homeContent.portrait_url
-                  ? <img src={homeContent.portrait_url} alt="Le maraîcher" style={{ display: 'block', width: '100%', aspectRatio: '3/4', objectFit: 'cover' }} />
+                  ? <Image src={homeContent.portrait_url} alt="Le maraîcher" width={300} height={400} sizes="(max-width: 768px) 100vw, 33vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
                   : <Placeholder label="Main sur légumes fraîchement cueillis" ratio="3/4" tone="vert" />
                 }
               </div>
@@ -319,9 +320,9 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
                 gap: 10,
               }}>
                 {photos.map(({ key, label, tone, gridColumn, gridRow }) => (
-                  <div key={key} style={{ gridColumn, gridRow, border: `2px solid ${t.orange}`, overflow: 'hidden' }}>
+                  <div key={key} style={{ gridColumn, gridRow, border: `2px solid ${t.orange}`, overflow: 'hidden', position: 'relative' }}>
                     {g(key)
-                      ? <img src={g(key)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      ? <Image src={g(key)} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
                       : <Placeholder label={label} ratio="auto" tone={tone} style={{ height: '100%' }} />
                     }
                   </div>
@@ -437,7 +438,7 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
               }}>
                 <div style={{ position: 'relative' }}>
                   {promo.image
-                    ? <img src={promo.image} alt={promo.titre} style={{ display: 'block', width: '100%', aspectRatio: '4/3', objectFit: 'cover' }} />
+                    ? <Image src={promo.image} alt={promo.titre} width={400} height={300} sizes="(max-width: 768px) 100vw, 25vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
                     : <Placeholder label={promo.titre} ratio="4/3" tone="sable" />
                   }
                   <div style={{
@@ -692,7 +693,7 @@ function ApercuProduitsB({ t, promos, onVoirPlus }) {
             }}>
               <div style={{ position: 'relative' }}>
                 {promo.image
-                  ? <img src={promo.image} alt={promo.titre} style={{ display: 'block', width: '100%', aspectRatio: '1/1', objectFit: 'cover' }} />
+                  ? <Image src={promo.image} alt={promo.titre} width={400} height={400} sizes="(max-width: 768px) 50vw, 25vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
                   : <Placeholder label={promo.titre} ratio="1/1" tone="sable" />
                 }
                 <div style={{

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import { Picto, Placeholder, FadeIn, MapContact, ORSTokens } from './shared';
 import { PRODUITS_B, PROMOS_B } from './site-b';
@@ -168,7 +169,7 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
 
       <section style={{ position: 'relative', height: 580, overflow: 'hidden', background: t.charbon }}>
         {homeContent && homeContent.hero_url
-          ? <img src={homeContent.hero_url} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.35 }} />
+          ? <Image src={homeContent.hero_url} alt="" fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.35 }} />
           : <Placeholder label="Maraîcher au champ" ratio="auto" tone="dark" style={{ position: 'absolute', inset: 0, height: '100%' }} />
         }
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(31,29,24,0.15) 0%, rgba(31,29,24,0.7) 100%)' }}/>
@@ -273,7 +274,7 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
           <div style={{ position: 'relative' }}>
             <div style={{ border: `2px solid ${t.orange}`, overflow: 'hidden' }}>
               {g(GALLERY[gallerieIdx].key)
-                ? <img src={g(GALLERY[gallerieIdx].key)} alt="" style={{ display: 'block', width: '100%', aspectRatio: '4/3', objectFit: 'cover' }} />
+                ? <Image src={g(GALLERY[gallerieIdx].key)} alt="" width={400} height={300} sizes="100vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
                 : <Placeholder label={GALLERY[gallerieIdx].label} ratio="4/3" tone={GALLERY[gallerieIdx].tone} />
               }
             </div>
@@ -334,7 +335,7 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
                 }}>
                   <div style={{ position: 'relative' }}>
                     {promo.image
-                      ? <img src={promo.image} alt={promo.titre} style={{ display: 'block', width: '100%', aspectRatio: '1/1', objectFit: 'cover' }} />
+                      ? <Image src={promo.image} alt={promo.titre} width={300} height={300} sizes="50vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
                       : <Placeholder label={promo.titre} ratio="1/1" tone="sable" />
                     }
                     {promo.remise && (
@@ -411,7 +412,7 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
             }}>
               <div style={{ position: 'relative' }}>
                 {p.image
-                  ? <img src={p.image} alt={p.nom} style={{ display: 'block', width: 90, height: 90, objectFit: 'cover' }} />
+                  ? <Image src={p.image} alt={p.nom} width={90} height={90} sizes="90px" style={{ display: 'block', objectFit: 'cover' }} />
                   : <Placeholder label={p.nom} ratio="1/1" tone={p.saison === 'Été' ? 'sable' : 'creme'} />
                 }
                 {promo && (
@@ -475,7 +476,7 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
           <div key={i} style={{ background: t.creme, border: `2px solid ${t.orange}`, marginBottom: 16, overflow: 'hidden' }}>
             <div style={{ position: 'relative' }}>
               {promo.image
-                ? <img src={promo.image} alt={promo.titre} style={{ display: 'block', width: '100%', aspectRatio: '16/9', objectFit: 'cover' }} />
+                ? <Image src={promo.image} alt={promo.titre} width={400} height={225} sizes="100vw" style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'cover' }} />
                 : <Placeholder label={promo.titre} ratio="16/9" tone="sable" />
               }
               <div style={{
