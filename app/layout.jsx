@@ -5,20 +5,25 @@ export const metadata = {
   description: "Maraîchers en Haute-Vienne (87), nous livrons fruits et légumes de saison sans pesticides. Livraisons le jeudi à Lussac-les-Églises et Magnac-Laval, le vendredi au Dorat et Châteauponsac. Vente à la ferme mercredi et samedi 9h–11h.",
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://oregale-des-saisons.fr' },
+  icons: {
+    icon: '/img/og-image.png',
+    shortcut: '/img/og-image.png',
+    apple: '/img/og-image.png',
+  },
   openGraph: {
     type: 'website',
     siteName: "O'régale des saisons",
     title: "O'régale des saisons — Fruits & légumes de saison, Haute-Vienne",
     description: "Maraîchers en Haute-Vienne. Fruits et légumes cultivés sans pesticides, récoltés le matin. Livraisons le jeudi et vendredi sur 4 communes, vente à la ferme mercredi et samedi.",
     url: 'https://oregale-des-saisons.fr',
-    images: [{ url: 'https://oregale-des-saisons.fr/images/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: 'https://oregale-des-saisons.fr/img/og-image.png', width: 1200, height: 630 }],
     locale: 'fr_FR',
   },
   twitter: {
     card: 'summary_large_image',
     title: "O'régale des saisons — Fruits & légumes de saison, Haute-Vienne",
     description: "Maraîchers en Haute-Vienne. Fruits et légumes cultivés sans pesticides, récoltés le matin.",
-    images: ['https://oregale-des-saisons.fr/images/og-image.png'],
+    images: ['https://oregale-des-saisons.fr/img/og-image.png'],
   },
 };
 
@@ -29,7 +34,7 @@ const jsonLd = {
   description: "Maraîchers en Haute-Vienne proposant des fruits et légumes de saison cultivés sans pesticides. Vente directe à la ferme et livraisons sur 4 communes.",
   url: 'https://oregale-des-saisons.fr',
   telephone: '+33760515836',
-  image: 'https://oregale-des-saisons.fr/images/og-image.png',
+  image: 'https://oregale-des-saisons.fr/img/og-image.png',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '1 Les Soulzors',

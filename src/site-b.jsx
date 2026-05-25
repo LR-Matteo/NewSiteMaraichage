@@ -4,6 +4,7 @@ import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import { Picto, Placeholder, FadeIn, MapContact, ORSTokens } from './shared';
 import { ProductGrid } from './product-grid';
+import { CartDrawer, CartButton } from './cart-drawer';
 
 function ContactFormBlock({ t, compact = false }) {
   const [form, setForm] = React.useState({ name: '', email: '', message: '' });
@@ -103,8 +104,25 @@ const PROMOS_B = [
 function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp, homeContent = {}, onLogoClick }) {
   const [section, setSection] = React.useState('accueil');
   const [saisonFilter, setSaisonFilter] = React.useState('toutes');
+  const [cartItems, setCartItems] = React.useState([]);
+  const [cartOpen, setCartOpen] = React.useState(false);
   const t = ORSTokens;
   const gridStyle = tweaks.productGrid || 'liste';
+
+  function addToCart(p) {
+    setCartItems(prev => {
+      const exists = prev.find(i => i.nom === p.nom);
+      if (exists) return prev.map(i => i.nom === p.nom ? { ...i, qty: i.qty + 1 } : i);
+      return [...prev, { nom: p.nom, prix: p.prix, unit: p.unit, qty: 1 }];
+    });
+    setCartOpen(true);
+  }
+  function updateQty(nom, qty) {
+    if (qty <= 0) setCartItems(prev => prev.filter(i => i.nom !== nom));
+    else setCartItems(prev => prev.map(i => i.nom === nom ? { ...i, qty } : i));
+  }
+  function removeFromCart(nom) { setCartItems(prev => prev.filter(i => i.nom !== nom)); }
+  function clearCart() { setCartItems([]); }
 
   React.useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [section]);
 
@@ -148,13 +166,16 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
             </button>
           ))}
         </nav>
-        <button onClick={() => setSection('contact')} style={{
-          background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
-          padding: '9px 18px', borderRadius: 999, fontSize: 13, fontWeight: 600,
-          display: 'flex', alignItems: 'center', gap: 8,
-        }}>
-          <Picto name="phone" size={14} stroke={2} /> 07 60 51 58 36
-        </button>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <CartButton count={cartItems.length} onClick={() => setCartOpen(true)} />
+          <button onClick={() => setSection('contact')} style={{
+            background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
+            padding: '9px 18px', borderRadius: 999, fontSize: 13, fontWeight: 600,
+            display: 'flex', alignItems: 'center', gap: 8,
+          }}>
+            <Picto name="phone" size={14} stroke={2} /> 07 60 51 58 36
+          </button>
+        </div>
       </header>
 
       {/* ═══════════ ACCUEIL ═══════════ */}
@@ -407,7 +428,7 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
             </button>
           ))}
         </div>
-        <ProductGrid produits={produits} t={t} variant={gridStyle} promos={allPromos} onVoirPromo={() => setSection('promotions')} />
+        <ProductGrid produits={produits} t={t} variant={gridStyle} promos={allPromos} onVoirPromo={() => setSection('promotions')} onAddToCart={addToCart} />
       </section>
       )}
 
@@ -598,6 +619,10 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
           <ContactFormBlock t={t} />
         </div>
       </section>
+      )}
+
+      {cartOpen && (
+        <CartDrawer items={cartItems} onClose={() => setCartOpen(false)} onUpdateQty={updateQty} onRemove={removeFromCart} onClear={clearCart} />
       )}
 
       {/* FOOTER */}

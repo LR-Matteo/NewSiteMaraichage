@@ -29,13 +29,13 @@ const ProduitImage = ({ p, ratio, tone, style }) => {
   );
 };
 
-function ProductGrid({ produits, t, variant, promos = [], onVoirPromo }) {
-  if (variant === 'cartes') return <ProductGridCards produits={produits} t={t} promos={promos} onVoirPromo={onVoirPromo} />;
-  if (variant === 'mosaique') return <ProductGridMosaic produits={produits} t={t} promos={promos} onVoirPromo={onVoirPromo} />;
-  return <ProductGridList produits={produits} t={t} promos={promos} onVoirPromo={onVoirPromo} />;
+function ProductGrid({ produits, t, variant, promos = [], onVoirPromo, onAddToCart }) {
+  if (variant === 'cartes') return <ProductGridCards produits={produits} t={t} promos={promos} onVoirPromo={onVoirPromo} onAddToCart={onAddToCart} />;
+  if (variant === 'mosaique') return <ProductGridMosaic produits={produits} t={t} promos={promos} onVoirPromo={onVoirPromo} onAddToCart={onAddToCart} />;
+  return <ProductGridList produits={produits} t={t} promos={promos} onVoirPromo={onVoirPromo} onAddToCart={onAddToCart} />;
 }
 
-function ProductGridList({ produits, t, promos, onVoirPromo }) {
+function ProductGridList({ produits, t, promos, onVoirPromo, onAddToCart }) {
   return (
     <div>
       {produits.map((p, i) => {
@@ -88,15 +88,26 @@ function ProductGridList({ produits, t, promos, onVoirPromo }) {
                 )}
                 <div style={{ fontSize: 13, color: t.charbonMute, marginTop: 4 }}>{p.unit}</div>
               </div>
-              {promo ? (
-                <button onClick={onVoirPromo} style={{
-                  background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
-                  padding: '10px 18px', borderRadius: 999, fontSize: 12, letterSpacing: 1, textTransform: 'uppercase',
-                  fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8,
-                }}>
-                  Voir la promo <Picto name="arrowRight" size={13} stroke={1.8} />
-                </button>
-              ) : null}
+              <div style={{ display: 'flex', gap: 8 }}>
+                {promo && (
+                  <button onClick={onVoirPromo} style={{
+                    background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
+                    padding: '10px 18px', borderRadius: 999, fontSize: 12, letterSpacing: 1, textTransform: 'uppercase',
+                    fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8,
+                  }}>
+                    Voir la promo <Picto name="arrowRight" size={13} stroke={1.8} />
+                  </button>
+                )}
+                {onAddToCart && (
+                  <button onClick={() => onAddToCart(p)} style={{
+                    background: t.creme, color: t.charbon, border: `1px solid ${t.bord}`, cursor: 'pointer',
+                    padding: '10px 18px', borderRadius: 999, fontSize: 12, letterSpacing: 1, textTransform: 'uppercase',
+                    fontWeight: 600, display: 'flex', alignItems: 'center', gap: 8,
+                  }}>
+                    <Picto name="basket" size={13} stroke={1.8} /> Ajouter à ma demande
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         );
@@ -105,7 +116,7 @@ function ProductGridList({ produits, t, promos, onVoirPromo }) {
   );
 }
 
-function ProductGridCards({ produits, t, promos, onVoirPromo }) {
+function ProductGridCards({ produits, t, promos, onVoirPromo, onAddToCart }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
       {produits.map((p, i) => {
@@ -143,35 +154,43 @@ function ProductGridCards({ produits, t, promos, onVoirPromo }) {
               {promo && promo.desc && (
                 <p style={{ fontSize: 12, color: t.orange, margin: '0 0 10px', fontStyle: 'italic', lineHeight: 1.4 }}>{promo.desc}</p>
               )}
-              <div style={{
-                display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
-                borderTop: `1px solid ${t.bord}`, paddingTop: 12,
-              }}>
-                <div>
-                  {promo ? (
-                    <>
-                      <div style={{ fontFamily: t.serif, fontSize: 26, fontWeight: 500, color: t.orange, lineHeight: 1, letterSpacing: -0.5 }}>
-                        {promo.prix}
+              <div style={{ borderTop: `1px solid ${t.bord}`, paddingTop: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 10 }}>
+                  <div>
+                    {promo ? (
+                      <>
+                        <div style={{ fontFamily: t.serif, fontSize: 26, fontWeight: 500, color: t.orange, lineHeight: 1, letterSpacing: -0.5 }}>
+                          {promo.prix}
+                          <span style={{ fontSize: 12, color: t.charbonMute, fontStyle: 'italic', marginLeft: 3 }}>{p.unit}</span>
+                        </div>
+                        <div style={{ fontSize: 11, color: t.charbonMute, textDecoration: 'line-through', marginTop: 2 }}>
+                          {p.prix} {p.unit}
+                        </div>
+                      </>
+                    ) : (
+                      <div style={{ fontFamily: t.serif, fontSize: 26, fontWeight: 500, color: t.vert, lineHeight: 1, letterSpacing: -0.5 }}>
+                        {p.prix}
                         <span style={{ fontSize: 12, color: t.charbonMute, fontStyle: 'italic', marginLeft: 3 }}>{p.unit}</span>
                       </div>
-                      <div style={{ fontSize: 11, color: t.charbonMute, textDecoration: 'line-through', marginTop: 2 }}>
-                        {p.prix} {p.unit}
-                      </div>
-                    </>
-                  ) : (
-                    <div style={{ fontFamily: t.serif, fontSize: 26, fontWeight: 500, color: t.vert, lineHeight: 1, letterSpacing: -0.5 }}>
-                      {p.prix}
-                      <span style={{ fontSize: 12, color: t.charbonMute, fontStyle: 'italic', marginLeft: 3 }}>{p.unit}</span>
-                    </div>
+                    )}
+                  </div>
+                  {promo && (
+                    <button onClick={onVoirPromo} style={{
+                      background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
+                      width: 34, height: 34, borderRadius: '50%',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <Picto name="arrowRight" size={13} stroke={2} />
+                    </button>
                   )}
                 </div>
-                {promo && (
-                  <button onClick={onVoirPromo} style={{
-                    background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
-                    width: 34, height: 34, borderRadius: '50%',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                {onAddToCart && (
+                  <button onClick={() => onAddToCart(p)} style={{
+                    width: '100%', background: t.charbon, color: t.creme, border: 'none', cursor: 'pointer',
+                    padding: '9px 12px', fontSize: 11, letterSpacing: 1, textTransform: 'uppercase',
+                    fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                   }}>
-                    <Picto name="arrowRight" size={13} stroke={2} />
+                    <Picto name="basket" size={12} stroke={1.8} color={t.creme} /> Ajouter à ma demande
                   </button>
                 )}
               </div>
@@ -183,7 +202,7 @@ function ProductGridCards({ produits, t, promos, onVoirPromo }) {
   );
 }
 
-function ProductGridMosaic({ produits, t, promos, onVoirPromo }) {
+function ProductGridMosaic({ produits, t, promos, onVoirPromo, onAddToCart }) {
   const layouts = [
     { col: 'span 8', row: 'span 2', size: 'big' },
     { col: 'span 4', row: 'span 1', size: 'small' },

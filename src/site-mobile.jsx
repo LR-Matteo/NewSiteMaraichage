@@ -4,6 +4,7 @@ import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import { Picto, Placeholder, FadeIn, MapContact, ORSTokens } from './shared';
 import { PRODUITS_B, PROMOS_B } from './site-b';
+import { CartDrawer } from './cart-drawer';
 
 function ContactFormBlockMobile({ t }) {
   const [form, setForm] = React.useState({ name: '', email: '', message: '' });
@@ -92,7 +93,24 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [saisonFilter, setSaisonFilter] = React.useState('toutes');
   const [gallerieIdx, setGallerieIdx] = React.useState(0);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [cartOpen, setCartOpen] = React.useState(false);
   const t = ORSTokens;
+
+  function addToCart(p) {
+    setCartItems(prev => {
+      const exists = prev.find(i => i.nom === p.nom);
+      if (exists) return prev.map(i => i.nom === p.nom ? { ...i, qty: i.qty + 1 } : i);
+      return [...prev, { nom: p.nom, prix: p.prix, unit: p.unit, qty: 1 }];
+    });
+    setCartOpen(true);
+  }
+  function updateQty(nom, qty) {
+    if (qty <= 0) setCartItems(prev => prev.filter(i => i.nom !== nom));
+    else setCartItems(prev => prev.map(i => i.nom === nom ? { ...i, qty } : i));
+  }
+  function removeFromCart(nom) { setCartItems(prev => prev.filter(i => i.nom !== nom)); }
+  function clearCart() { setCartItems([]); }
   React.useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [section]);
 
   const allProduits = produitsProp && produitsProp.length > 0 ? produitsProp : PRODUITS_B;
@@ -127,11 +145,27 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
             O'régale <em style={{ fontStyle: 'italic', fontWeight: 400, color: t.vert }}>des saisons</em>
           </div>
         </div>
-        <button onClick={() => setMenuOpen(!menuOpen)} style={{
-          background: 'transparent', border: 'none', cursor: 'pointer', padding: 4,
-        }}>
-          <Picto name={menuOpen ? 'close' : 'menu'} size={24} stroke={1.5} color={t.charbon} />
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <button onClick={() => setCartOpen(true)} style={{
+            position: 'relative', background: cartItems.length > 0 ? t.vert : 'transparent',
+            border: cartItems.length > 0 ? 'none' : 'none', cursor: 'pointer', padding: 6, borderRadius: '50%',
+          }}>
+            <Picto name="basket" size={22} stroke={1.6} color={cartItems.length > 0 ? t.creme : t.charbon} />
+            {cartItems.length > 0 && (
+              <span style={{
+                position: 'absolute', top: 0, right: 0,
+                background: t.orange, color: t.creme, borderRadius: '50%',
+                width: 16, height: 16, fontSize: 9, fontWeight: 700,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>{cartItems.length}</span>
+            )}
+          </button>
+          <button onClick={() => setMenuOpen(!menuOpen)} style={{
+            background: 'transparent', border: 'none', cursor: 'pointer', padding: 4,
+          }}>
+            <Picto name={menuOpen ? 'close' : 'menu'} size={24} stroke={1.5} color={t.charbon} />
+          </button>
+        </div>
       </header>
 
       {/* Menu mobile */}
@@ -449,6 +483,13 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
                     {p.prix}<span style={{ fontSize: 12, color: t.charbonMute, marginLeft: 2 }}>{p.unit}</span>
                   </div>
                 )}
+                <button onClick={() => addToCart(p)} style={{
+                  marginTop: 10, background: t.charbon, color: t.creme, border: 'none', cursor: 'pointer',
+                  padding: '7px 12px', fontSize: 10, letterSpacing: 0.5, textTransform: 'uppercase',
+                  fontWeight: 600, display: 'flex', alignItems: 'center', gap: 5,
+                }}>
+                  <Picto name="basket" size={11} stroke={1.8} color={t.creme} /> Ajouter
+                </button>
               </div>
             </div>
           );
@@ -624,6 +665,10 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
           <ContactFormBlockMobile t={t} />
         </div>
       </section>
+      )}
+
+      {cartOpen && (
+        <CartDrawer items={cartItems} onClose={() => setCartOpen(false)} onUpdateQty={updateQty} onRemove={removeFromCart} onClear={clearCart} />
       )}
 
       {/* Footer */}
