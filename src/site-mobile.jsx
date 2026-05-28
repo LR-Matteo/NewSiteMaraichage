@@ -551,20 +551,11 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
             <div style={{ padding: 18 }}>
               <h3 style={{ fontFamily: t.serif, fontSize: 22, fontWeight: 500, margin: '0 0 6px', letterSpacing: -0.3 }}>{promo.titre}</h3>
               {promo.desc && <p style={{ fontSize: 13, color: t.charbonSoft, lineHeight: 1.5, margin: '0 0 14px' }}>{promo.desc}</p>}
-              <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', paddingTop: 12, borderTop: `1px solid ${t.bord}` }}>
-                <div>
-                  <div style={{ fontFamily: t.serif, fontSize: 28, fontWeight: 500, color: t.orange, letterSpacing: -0.5 }}>
-                    {promo.prix}<span style={{ fontSize: 12, color: t.charbonMute, marginLeft: 3 }}>{promo.unit}</span>
-                  </div>
-                  {promo.avant && <div style={{ fontSize: 12, color: t.charbonMute, textDecoration: 'line-through' }}>{promo.avant} {promo.unit}</div>}
+              <div style={{ paddingTop: 12, borderTop: `1px solid ${t.bord}` }}>
+                <div style={{ fontFamily: t.serif, fontSize: 28, fontWeight: 500, color: t.orange, letterSpacing: -0.5 }}>
+                  {promo.prix}<span style={{ fontSize: 12, color: t.charbonMute, marginLeft: 3 }}>{promo.unit}</span>
                 </div>
-                <button style={{
-                  background: t.orange, color: t.creme, border: 'none', cursor: 'pointer',
-                  width: 36, height: 36, borderRadius: '50%',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <Picto name="arrowRight" size={14} stroke={2} />
-                </button>
+                {promo.avant && <div style={{ fontSize: 12, color: t.charbonMute, textDecoration: 'line-through' }}>{promo.avant} {promo.unit}</div>}
               </div>
             </div>
           </div>
@@ -648,7 +639,7 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
           <div style={{ marginTop: 12, padding: '14px 18px', background: t.creme, border: `1px solid ${t.bord}` }}>
             <div style={{ fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase', color: t.charbonMute, fontWeight: 600, marginBottom: 10 }}>Suivez-nous</div>
             <div style={{ display: 'flex', gap: 10 }}>
-              <a href="https://www.instagram.com/oregaledessaisons" target="_blank" rel="noopener noreferrer" style={{
+              <a href="https://www.instagram.com/o_regale_des_saisons/" target="_blank" rel="noopener noreferrer" style={{
                 flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 padding: '10px 0',
                 background: 'linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
@@ -657,7 +648,7 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
                 <Picto name="instagram" size={15} color="#fff" stroke={1.6} />
                 Instagram
               </a>
-              <a href="https://www.facebook.com/oregaledessaisons" target="_blank" rel="noopener noreferrer" style={{
+              <a href="https://www.facebook.com/o.regale.des.saisons.ancien/" target="_blank" rel="noopener noreferrer" style={{
                 flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 padding: '10px 0',
                 background: '#1877F2', color: '#fff', borderRadius: 999,
@@ -700,11 +691,11 @@ function SiteMobile({ produits: produitsProp, promotions: promotionsProp, homeCo
           Plus sain et bien meilleur
         </div>
         <div style={{ display: 'flex', gap: 14, marginBottom: 16 }}>
-          <a href="https://www.instagram.com/oregaledessaisons" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: t.creme, textDecoration: 'none', opacity: 0.8 }}>
+          <a href="https://www.instagram.com/o_regale_des_saisons/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: t.creme, textDecoration: 'none', opacity: 0.8 }}>
             <Picto name="instagram" size={15} color={t.orange} stroke={1.6} />
             Instagram
           </a>
-          <a href="https://www.facebook.com/oregaledessaisons" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: t.creme, textDecoration: 'none', opacity: 0.8 }}>
+          <a href="https://www.facebook.com/o.regale.des.saisons.ancien/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: t.creme, textDecoration: 'none', opacity: 0.8 }}>
             <Picto name="facebook" size={15} color={t.orange} stroke={1.6} />
             Facebook
           </a>

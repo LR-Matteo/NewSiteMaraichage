@@ -592,7 +592,7 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
             <div style={{ padding: '16px 20px', background: t.creme, border: `1px solid ${t.bord}`, display: 'flex', gap: 12, alignItems: 'center' }}>
               <div style={{ fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase', color: t.charbonMute, fontWeight: 600, minWidth: 80 }}>Suivez-nous</div>
               <div style={{ display: 'flex', gap: 10 }}>
-                <a href="https://www.instagram.com/oregaledessaisons" target="_blank" rel="noopener noreferrer" style={{
+                <a href="https://www.instagram.com/o_regale_des_saisons/" target="_blank" rel="noopener noreferrer" style={{
                   display: 'flex', alignItems: 'center', gap: 8, padding: '8px 14px',
                   background: 'linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
                   color: '#fff', borderRadius: 999, textDecoration: 'none', fontSize: 12, fontWeight: 600,
@@ -600,7 +600,7 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
                   <Picto name="instagram" size={14} color="#fff" stroke={1.6} />
                   Instagram
                 </a>
-                <a href="https://www.facebook.com/oregaledessaisons" target="_blank" rel="noopener noreferrer" style={{
+                <a href="https://www.facebook.com/o.regale.des.saisons.ancien/" target="_blank" rel="noopener noreferrer" style={{
                   display: 'flex', alignItems: 'center', gap: 8, padding: '8px 14px',
                   background: '#1877F2', color: '#fff', borderRadius: 999,
                   textDecoration: 'none', fontSize: 12, fontWeight: 600,
@@ -659,11 +659,11 @@ function SiteB({ tweaks = {}, produits: produitsProp, promotions: promotionsProp
           </div>
           <div>
             <div style={{ fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', opacity: 0.5, marginBottom: 16 }}>Réseaux sociaux</div>
-            <a href="https://www.instagram.com/oregaledessaisons" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, marginBottom: 12, color: t.creme, textDecoration: 'none', opacity: 0.85 }}>
+            <a href="https://www.instagram.com/o_regale_des_saisons/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, marginBottom: 12, color: t.creme, textDecoration: 'none', opacity: 0.85 }}>
               <Picto name="instagram" size={16} color={t.orange} stroke={1.6} />
               Instagram
             </a>
-            <a href="https://www.facebook.com/oregaledessaisons" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, color: t.creme, textDecoration: 'none', opacity: 0.85 }}>
+            <a href="https://www.facebook.com/o.regale.des.saisons.ancien/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, color: t.creme, textDecoration: 'none', opacity: 0.85 }}>
               <Picto name="facebook" size={16} color={t.orange} stroke={1.6} />
               Facebook
             </a>
